@@ -33,10 +33,11 @@ public class Cinema {
 	
 	@Column(name = "number_of_auditoriums")
 	private int auditoriums;
+	
 	@Column(name = "image")
 	private String image;
 	
-	@JsonBackReference
+	@JsonBackReference()
 	@OneToMany(mappedBy = "cinema")
-	private List<Auditorium> Auditorium;
+	private List<Auditorium> auditorium;
 }

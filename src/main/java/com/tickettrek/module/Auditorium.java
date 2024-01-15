@@ -10,8 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,16 +29,17 @@ public class Auditorium {
 	private String name;
 
 	@Column(name = "number_of_rows")
-	private String numberOfRows;
+	private int numberOfRows;
 
 	@Column(name = "number_of_columns")
-	private String numberOfColumns;
+	private int numberOfColumns;
+	
 
-	@JsonBackReference
-	@OneToOne
+	@ManyToOne	
 	@JoinColumn(name = "cinema_id")
 	private Cinema cinema;
-
+	
+	
 	@JsonBackReference
 	@OneToMany(mappedBy = "auditorium")
 	private List<AuditoriumShowTime> auditoriumShowTime;

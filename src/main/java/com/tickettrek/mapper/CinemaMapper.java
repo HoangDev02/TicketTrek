@@ -12,6 +12,7 @@ import com.tickettrek.module.Cinema;
 public class CinemaMapper {
 	public CinemaDTO toDTO(Cinema cinema) {
 		CinemaDTO dto = new CinemaDTO();
+		dto.setId(cinema.getId());
 		dto.setAddress(cinema.getAddress());
 		dto.setImage(cinema.getImage());
 		dto.setName(cinema.getName());
@@ -25,6 +26,7 @@ public class CinemaMapper {
 	}
 	public Cinema toModule(CinemaDTO dto) {
 		Cinema module = new Cinema();
+		module.setId(dto.getId());
 		module.setAddress(dto.getAddress());
 		module.setImage(dto.getImage());
 		module.setName(dto.getName());

@@ -1,6 +1,5 @@
 package com.tickettrek.module;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 

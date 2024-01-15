@@ -33,8 +33,7 @@ public class Seats {
     @OneToOne
     @JoinColumn(name = "tiket_id") // Define the foreign key column
     private Tiket tikets;
-
-    @JsonBackReference
+    
     @ManyToOne
     @JoinColumn(name = "auditorium_id")
     private Auditorium auditorium;
