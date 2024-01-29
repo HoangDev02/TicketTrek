@@ -35,10 +35,9 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	@Column(name = "enabled")
-
 	private boolean enabled;
+	
 	@Column(name = "join_date")
-
 	@CreationTimestamp
 	private Date joinDate;
 

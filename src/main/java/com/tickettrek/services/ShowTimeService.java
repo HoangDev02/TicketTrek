@@ -9,5 +9,4 @@ public interface ShowTimeService {
 	ShowTime update(Integer id,ShowTime showTime);
 	ShowTime getShowTimeById(Integer id);
 	List<ShowTime> getAllShowTime();
-	Integer  getAuditoriumIdByShowTimeId(Integer id);
 }

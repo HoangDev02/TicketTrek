@@ -65,5 +65,5 @@ public class Movie {
 
     @JsonBackReference
     @OneToMany(mappedBy = "movie")
-    private List<MovieShowTime> movieShowTime;
+    private List<ShowTime> showTime;
 }

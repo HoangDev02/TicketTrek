@@ -5,7 +5,7 @@ import java.util.List;
 import com.tickettrek.module.Tiket;
 
 public interface TiketService {
-	Tiket createTiket(Tiket tiket);
+	Tiket createTiket(Tiket tiket, int peopleId);
 
 	Tiket updateTiket(int id, Tiket tiket);
 

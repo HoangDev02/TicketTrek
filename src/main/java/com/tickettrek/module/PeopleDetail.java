@@ -1,12 +1,10 @@
 package com.tickettrek.module;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -14,16 +12,16 @@ import lombok.Data;
 @Entity
 @Table(name = "people_detail")
 public class PeopleDetail {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "people_id")
-	private int id;
+	@EmbeddedId
+	private PeopleDetailId id;
 
+	@MapsId("tiketId")
 	@ManyToOne
 	@JoinColumn(name = "tiket_id")
 	private Tiket tiket;
-	
+
+	@MapsId("peopleId")
 	@ManyToOne
-	@JoinColumn(name = "people_id", insertable = false, updatable = false)
+	@JoinColumn(name = "people_id")
 	private People people;
 }

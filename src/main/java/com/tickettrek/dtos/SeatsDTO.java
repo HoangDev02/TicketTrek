@@ -7,6 +7,6 @@ public class SeatsDTO {
 	private Integer id;
 	private int seatNumber;
 	private boolean seatType;
-	private int tiketId;
+//	private int tiketId;
 	private int auditoriumId;
 }

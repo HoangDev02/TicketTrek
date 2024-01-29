@@ -25,7 +25,7 @@ public class SeatsMapper {
 		dto.setId(module.getId());
 		dto.setSeatNumber(module.getSeatNumber());
 		dto.setSeatType(module.isSeatType());
-		dto.setTiketId(module.getTikets().getId());
+//		dto.setTiketId(module.getTikets().getId());
 		dto.setAuditoriumId(module.getAuditorium().getId());
 		return dto;
 	}
@@ -37,7 +37,7 @@ public class SeatsMapper {
 		module.setSeatNumber(dto.getSeatNumber());
 		module.setSeatType(dto.isSeatType());
 		module.setAuditorium(auditoriumService.getAuditoriumById(dto.getAuditoriumId()));
-		module.setTikets(tiketService.getTiketById(dto.getTiketId()));
+//		module.setTikets(tiketService.getTiketById(dto.getTiketId()));
 		return module;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,26 +21,35 @@ import lombok.Data;
 @Table(name = "tikets")
 public class Tiket {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tiket_id")
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "tiket_id")
+	private int id;
 
-    @Column(name = "price")
-    private int price;
+	@Column(name = "price")
+	private int price;
 
-    @Column(name = "status")
-    private boolean status;
+	@Column(name = "status")
+	private boolean status;
 
-    @JsonBackReference
-    @OneToOne(mappedBy = "tikets")
-    private Seats seats;
-    
-    @JsonBackReference
-    @OneToMany(mappedBy = "tiket")
-    private List<PeopleDetail> peopleDetail;
+//    @JsonBackReference
+//    @OneToOne(mappedBy = "tikets")
+//    private Seats seats;
 
-    @OneToOne
-    @JoinColumn(name = "booking_id", unique = true)
-    private Booking booking;
+	@JsonBackReference
+	@OneToOne
+	@JoinColumn(name = "seat_id") // Define the foreign key column
+	private Seats seats;
+
+//    @JsonBackReference
+	@OneToMany(mappedBy = "tiket")
+	private List<PeopleDetail> peopleDetail;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy = "tiket",cascade = CascadeType.ALL)
+	private List<Booking> booking;
+//	
+//	@OneToOne
+//	@JoinColumn(name = "booking_id", unique = true)
+//	private Booking booking;
 }

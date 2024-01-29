@@ -42,7 +42,7 @@ public class Auditorium {
 	
 	@JsonBackReference
 	@OneToMany(mappedBy = "auditorium")
-	private List<AuditoriumShowTime> auditoriumShowTime;
+	private List<ShowTime> showTime;
 
 	@JsonBackReference
 	@OneToMany(mappedBy = "auditorium")

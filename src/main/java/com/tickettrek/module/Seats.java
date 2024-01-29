@@ -30,8 +30,7 @@ public class Seats {
     private boolean seatType;
 
     @JsonBackReference
-    @OneToOne
-    @JoinColumn(name = "tiket_id") // Define the foreign key column
+    @OneToOne(mappedBy = "seats")
     private Tiket tikets;
     
     @ManyToOne

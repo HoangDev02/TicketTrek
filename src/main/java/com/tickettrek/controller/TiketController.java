@@ -3,6 +3,7 @@ package com.tickettrek.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,11 +45,14 @@ public class TiketController {
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<tiketDTO> createTiket(@RequestBody tiketDTO tiketDTO) {
-		Tiket tiket = tiketMapper.toModule(tiketDTO);
-		tiket = tiketService.createTiket(tiket);
-		tiketDTO createdTiketDTO = tiketMapper.toDTO(tiket);
-		return ResponseEntity.ok(createdTiketDTO);
+	public ResponseEntity<?> createTiket(@RequestBody tiketDTO tiketDTO) {
+		try {
+			Tiket tiket = tiketMapper.toModule(tiketDTO);
+			tiketService.createTiket(tiket, tiketDTO.getPeopleId());
+			return ResponseEntity.ok(tiketDTO);
+		}catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
 
 	@PutMapping("/{id}")

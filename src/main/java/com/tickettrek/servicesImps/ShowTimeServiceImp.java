@@ -3,11 +3,13 @@ package com.tickettrek.servicesImps;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tickettrek.module.ShowTime;
 import com.tickettrek.reponsitories.ShowTimeRoponsitory;
 import com.tickettrek.services.ShowTimeService;
 
+@ Service
 public class ShowTimeServiceImp implements ShowTimeService {
 
 	@Autowired
@@ -42,10 +44,6 @@ public class ShowTimeServiceImp implements ShowTimeService {
 		return showTimeRoponsitory.findAll();
 	}
 
-	@Override
-	public Integer getAuditoriumIdByShowTimeId(Integer id) {
-		// TODO Auto-generated method stub
-		return showTimeRoponsitory.findAuditoriumIdByShowTimeId(id);
-	}
+
 
 }

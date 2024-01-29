@@ -9,4 +9,5 @@ public interface UserService {
 	List<User> getAllUser();
 	User getUserById(Integer user);
 	void deleteUser(Integer id);
+	int getIdUserByUsername(String username);
 }

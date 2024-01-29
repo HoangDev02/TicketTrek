@@ -1,7 +1,6 @@
 package com.tickettrek.module;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -10,7 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -24,16 +24,17 @@ public class ShowTime {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "showtime_id")
-	private int id;
+	private Integer id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Timestamp showDateTime;
 
-	@JsonBackReference
-	@OneToMany(mappedBy = "showtime")
-	private List<AuditoriumShowTime> auditoriumShowTime;
+	@ManyToOne
+	@JoinColumn(name = "auditorium_id")
+	private Auditorium auditorium;
 
 	@JsonBackReference
-	@OneToMany(mappedBy = "showtime")
-	private List<MovieShowTime> movieShowTime;
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private Movie movie;
 }

@@ -2,8 +2,6 @@ package com.tickettrek.module;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,19 +13,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "people")
+@Table(name = "peoples")
 public class People {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "people_id")
-	private int id;
-	
+	private Integer id;
+
 	@Column(name = "name")
 	private String name;
-	
-	@JsonBackReference
+
 	@OneToMany(mappedBy = "people")
 	private List<PeopleDetail> peopleDetail;
-	
+
 }
